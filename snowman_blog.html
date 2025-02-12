@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snowman Blog</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #1e3c72, #2a5298);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-family: 'Arial', sans-serif;
+    }
+    #snowman {
+      font-size: 100px;
+    }
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: fall 10s linear infinite;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to the Snowman Blog!</h1>
+  <div id="snowman">☃️</div>
+  <audio autoplay loop>
+    <source src="https://www.example.com/snowman.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    function createSnowflake() {
+      const snowflake = document.createElement('div');
+      snowflake.classList.add('snowflake');
+      snowflake.style.left = Math.random() * 100 + 'vw';
+      snowflake.style.width = snowflake.style.height = Math.random() * 10 + 10 + 'px';
+      snowflake.style.animationDuration = Math.random() * 3 + 7 + 's';
+      document.body.appendChild(snowflake);
+
+      setTimeout(() => {
+        snowflake.remove();
+      }, 10000);
+    }
+
+    setInterval(createSnowflake, 200);
+  </script>
+</body>
+</html>
